@@ -1,4 +1,4 @@
-public class L104_ManyCostWrapClass {
+public class L104_MoneyCostWrapClass {
 
     public static void main(String[] args) {
 
@@ -22,7 +22,7 @@ public class L104_ManyCostWrapClass {
         // wrappers processing
         countCh2 = countCh1/wrap;
 
-        System.out.println(""+);
+        System.out.println(""+money);
         System.out.println(countCh1 + "\n" + countCh2);
 
         return  countCh2;
