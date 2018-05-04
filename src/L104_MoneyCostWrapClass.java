@@ -19,10 +19,11 @@ public class L104_ManyCostWrapClass {
         // money processing
         countCh1 = money/cost;
 
-        // wrapper processing
+        // wrappers processing
         countCh2 = countCh1/wrap;
 
-        System.out.println(countCh1 + " " + countCh2);
+        System.out.println(""+);
+        System.out.println(countCh1 + "\n" + countCh2);
 
         return  countCh2;
 
