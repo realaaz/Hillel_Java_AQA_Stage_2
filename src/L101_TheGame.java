@@ -1,6 +1,6 @@
 import  java.util.*;
 
-public class TheGame {
+public class L101_TheGame {
 
 
 

@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class TheTower {
+public class L102_TheTowerWithUserInput {
 
     public static void main(String[] args) {
 
