@@ -7,7 +7,7 @@ public class L104_MoneyCostWrapClass {
 
     }
 
-    // many cost wrap
+    // money cost wrap
     // 1 шоколадка 1 доллар
     // можно купить 1 шоколадку за X оберок
 
