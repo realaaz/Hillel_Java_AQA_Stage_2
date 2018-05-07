@@ -2,32 +2,36 @@ public class L104_MoneyCostWrapClass {
 
     public static void main(String[] args) {
 
-        ManyCostWrapClass(100, 11, 3);
+        ManyCostWrapClass(80, 10, 2);
 
     }
 
-    // money cost wrap -> func which returns
-    // 1) 1 шоколадка X доллар
-    // 2) можно купить 1 шоколадку за Y оберок
+    // money cost wrap -> func which returns count of chocolates that we can buy
 
-    public static int ManyCostWrapClass (int money, int cost, int wrap) {
+    // 0) total amount paid:          money
+    // 1) cost of one piece of choco: cost
+    // 2) exchange rate of packages:  wrap
+
+    public static int ManyCostWrapClass (int money, int cost, int wrapExRate) {
 
         // money processing
-        int countCh1 = money/cost;
+        int countChFirst = money/cost;
 
         // wrappers processing
-        int countCh2 = countCh1/wrap;
+        int countChFinal = countChFirst;
 
-        // total chocolates processing
-        int countCh3 = countCh1 + countCh2;
+        while (countChFirst >= (wrapExRate)) {
+
+            countChFirst = countChFirst-wrapExRate;
+            countChFinal = countChFinal + 1;
+
+        }
 
         System.out.println("денег было при входе в магаз: " + money);
         System.out.println("стоимость каждой шоколадки: " + cost);
-        System.out.println("купили такое количество шоколадок и получили упаковок: " + countCh1);
-        System.out.println("получили шоколадки за упаковки: " + countCh2);
-        System.out.println("всего шоколадок в итоге: " + countCh3);
+        System.out.println("всего шоколадок в итоге: " + countChFinal);
 
-        return  countCh2;
+        return  countChFinal;
 
     }
 
