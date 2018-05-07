@@ -2,7 +2,7 @@ public class L104_MoneyCostWrapClass {
 
     public static void main(String[] args) {
 
-        ManyCostWrapClass(80, 10, 2);
+        System.out.println("chocolate were bought: " + ManyCostWrapClass(80, 10, 2));
 
     }
 
@@ -26,10 +26,6 @@ public class L104_MoneyCostWrapClass {
             countChFinal = countChFinal + 1;
 
         }
-
-        System.out.println("денег было при входе в магаз: " + money);
-        System.out.println("стоимость каждой шоколадки: " + cost);
-        System.out.println("всего шоколадок в итоге: " + countChFinal);
 
         return  countChFinal;
 
