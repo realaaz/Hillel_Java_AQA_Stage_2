@@ -14,5 +14,6 @@ public class L401_LogsHandler {
     // store own logs of handler working??))
 
     // check repo renaming
+    // check repo renaming 2 - config in .git was changed
 
 }
