@@ -1,16 +1,9 @@
-import javax.sound.midi.Patch;
 import java.io.*;
-
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-
-import java.util.function.Consumer;
-import java.nio.file.Path;
 import java.io.IOException;
-import java.util.stream.Stream;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-public class L401_LogsHandler_v04 {
+public class L401_LogsHandler_v06 {
 
     public static void main(String[] args) throws IOException {
 
@@ -63,16 +56,32 @@ public class L401_LogsHandler_v04 {
                     //String line2;
                     while ((line = bufferedReader.readLine()) != null) {
 
-                        if (line.contains("Captured transactions:")) {
+//                        if (line.contains("Captured transactions:")) {
+//                            String line2 = bufferedReader.readLine();
+//                            stringBuffer.append(line2);
+//                            stringBuffer.append("\n");
+//                        }
+
+
+                        String strPattern = "(\\s*)?(Captured transactions:)(\\s*)?($)";
+
+                        Pattern p = Pattern.compile(strPattern);
+                        Matcher m = p.matcher(line);
+
+                        if (m.find()) {
+                            //System.out.println(line);
                             String line2 = bufferedReader.readLine();
                             stringBuffer.append(line2);
                             stringBuffer.append("\n");
+                        } else {
+                            //System.out.println("222");
                         }
+
 
 
                     }
                     fileReader.close();
-                    System.out.println("Contents of file:");
+                    System.out.println("Valuable content of the file:");
                     System.out.println(stringBuffer.toString());
 
                 } catch (IOException e) {
@@ -81,12 +90,11 @@ public class L401_LogsHandler_v04 {
 
             }
 
-            System.out.println("Files Processed: " + "\t" + (i + 1));
+            System.out.println("Files Processed: " + "\t" + (i + 1) + "\n");
 
         }
 
         return listOfFiles.length;
     }
-
 
 }

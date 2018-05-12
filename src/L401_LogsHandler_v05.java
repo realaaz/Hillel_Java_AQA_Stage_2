@@ -1,16 +1,9 @@
-import javax.sound.midi.Patch;
 import java.io.*;
-
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-
-import java.util.function.Consumer;
-import java.nio.file.Path;
 import java.io.IOException;
-import java.util.stream.Stream;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-public class L401_LogsHandler_v04 {
+public class L401_LogsHandler_v05 {
 
     public static void main(String[] args) throws IOException {
 
@@ -69,6 +62,11 @@ public class L401_LogsHandler_v04 {
                             stringBuffer.append("\n");
                         }
 
+//                        if (line.matches("Captured transactions:")){
+//                            String line2 = bufferedReader.readLine();
+//                            stringBuffer.append(line2);
+//                            stringBuffer.append("\n");
+//                          }
 
                     }
                     fileReader.close();
