@@ -3,7 +3,7 @@ import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class L401_LogsHandler_v06 {
+public class L401_LogsHandler_v07 {
 
     public static void main(String[] args) throws IOException {
 
@@ -22,7 +22,9 @@ public class L401_LogsHandler_v06 {
 
         long startTime = System.currentTimeMillis();
 
-        logsHandler("Logs");
+        //logsHandler("Logs");
+
+        logsConverter(logsHandler("Logs"));
 
         System.out.println("Execution Time: " + "\t" + (System.currentTimeMillis() - startTime) + " milliseconds");
 
@@ -31,10 +33,16 @@ public class L401_LogsHandler_v06 {
 
     }
 
-    public static void logsHandler(String patchToLogFiles) {
+    // logsHandler
+    // TODO: 5/12/18 add logsHandler description
+    //
+
+    public static String logsHandler(String patchToLogFiles) {
 
         File folder = new File(patchToLogFiles);
         File[] listOfFiles = folder.listFiles();
+
+        StringBuffer stringBufferOut = new StringBuffer();
 
         int linesAll = 0, linesValuable = 0;
 
@@ -74,11 +82,11 @@ public class L401_LogsHandler_v06 {
                             //System.out.println("no matches(((");
                         }
 
-
                     }
                     fileReader.close();
                     System.out.println("Valuable content of the file: " + "\n");
                     System.out.println(stringBuffer.toString());
+                    stringBufferOut = stringBuffer;
 
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -87,11 +95,52 @@ public class L401_LogsHandler_v06 {
             }
 
             System.out.println("Files Processed: " + "\t" + (i + 1));
-            System.out.println("linesAll: " + linesAll +" linesValuable: "+ linesValuable + "\n");
+            System.out.println("All lines: " + linesAll +"; Valuable Lines: "+ linesValuable + "; Ratio (%): "+ linesValuable*100.0/linesAll + "\n");
+
 
         }
+        //System.out.println(stringBufferOut.toString());
 
-        //return something;
+        return stringBufferOut.toString();
     }
+
+
+
+
+    // logsConverter
+    // TODO: 5/13/18 add logsConverter description and write it ))
+    //
+
+    public static String logsConverter (String inRawValuableLogs) {
+
+        String content1 = inRawValuableLogs.replaceAll("(\\n)", "//");
+        String content2 = content1.replaceAll("(\\s+)", "/");
+        String content3 = content2.replaceAll("//", "\n");
+
+        System.out.println(content3.toString()+"\n");
+
+        String[] arrDate = content3.split("/");
+
+
+        String outPreparedToStoreLogs = "";
+        return  arrDate[0] + " " + arrDate[1] + " " + arrDate[2] + " : " + arrDate[4];
+    }
+
+
+
+    // logsSaver
+    // TODO: 5/13/18 add logsSaver description and write it too
+    //
+
+    public static Boolean logsSaver (String inPreparedToStoreLogs) {
+
+        return true;
+    }
+
+
+
+
+
+
 
 }
