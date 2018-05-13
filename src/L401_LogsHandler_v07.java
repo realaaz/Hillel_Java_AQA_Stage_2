@@ -24,7 +24,7 @@ public class L401_LogsHandler_v07 {
 
         //logsHandler("Logs");
 
-        logsConverter(logsHandler("Logs"));
+        System.out.println(logsConverter(logsHandler("Logs")));
 
         System.out.println("Execution Time: " + "\t" + (System.currentTimeMillis() - startTime) + " milliseconds");
 
@@ -123,7 +123,7 @@ public class L401_LogsHandler_v07 {
 
 
         String outPreparedToStoreLogs = "";
-        return  arrDate[0] + " " + arrDate[1] + " " + arrDate[2] + " : " + arrDate[4];
+        return  arrDate[0] + " " + arrDate[1] + " " + arrDate[2] + " : " + arrDate[5];
     }
 
 
