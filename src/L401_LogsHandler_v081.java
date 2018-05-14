@@ -18,11 +18,10 @@ public class L401_LogsHandler_v081 {
         // 4 prepare out file (create/close+permissions)
         // 6 println searched lines by log file (1by1)
         // 7 store searched string from logs to out file (bulk)
-        // 8 store own logs of handler working??))
+        // 8 store/out own logs of handler working ?? :)
+        // add sorting ??
 
         long startTime = System.currentTimeMillis();
-
-        //logsHandler("Logs");
 
         logsHandler("Logs");
 
@@ -34,18 +33,19 @@ public class L401_LogsHandler_v081 {
     }
 
     // logsHandler
-    // TODO: 5/12/18 add logsHandler description
-    //
 
     public static Boolean logsHandler(String patchToLogFiles) throws IOException {
 
+        // reader
         File folder = new File(patchToLogFiles);
         File[] listOfFiles = folder.listFiles();
 
         StringBuffer stringBufferOut = new StringBuffer();
+        StringBuffer stringBuffer = new StringBuffer(); //!!! for stored all buffer - need refactoring
 
         int linesAll = 0, linesValuable = 0, i;
 
+        // check empty logs folders
         if (listOfFiles.length <= 0) {
             System.out.println("Nothing to proceed here: " + patchToLogFiles);
             return false;
@@ -54,15 +54,16 @@ public class L401_LogsHandler_v081 {
         for (i = 0; i < listOfFiles.length; i++) {
 
             if (listOfFiles[i].isFile()) {
-                System.out.println("File name: " + listOfFiles[i].getName());
+                System.out.println("File(s) name: " + "\t" +"\t" + listOfFiles[i].getName());
 
                 try {
                     File file = new File(patchToLogFiles +"/"+ listOfFiles[i].getName());
                     FileReader fileReader = new FileReader(file);
                     BufferedReader bufferedReader = new BufferedReader(fileReader);
-                    StringBuffer stringBuffer = new StringBuffer();
+                    //StringBuffer stringBuffer = new StringBuffer();
                     String line;
 
+                    // converter
                     while ((line = bufferedReader.readLine()) != null) {
 
                         linesAll = linesAll + 1;
@@ -82,6 +83,7 @@ public class L401_LogsHandler_v081 {
 
                             String[] arrToStore = line3.split("/");
 
+                            // check and resolve 1 symbol in day (index[1])
                             if (arrToStore[1].length()==1) {
                                 arrToStore[1] = " "+ arrToStore[1];
                             }
@@ -101,10 +103,11 @@ public class L401_LogsHandler_v081 {
                     ///System.out.println("Valuable content of the file: " + "\n");
                     ///System.out.println(stringBuffer.toString());
 
-                    stringBufferOut = stringBuffer;
+                    stringBufferOut = stringBuffer; // ? need to optimize ?
 
                 } catch (IOException e) {
                     e.printStackTrace();
+                    return false;
                 }
 
             }
@@ -116,15 +119,26 @@ public class L401_LogsHandler_v081 {
         ///System.out.println("Final valuable logs to store: " + "\n");
         ///System.out.println(stringBufferOut.toString());
 
-        System.out.println("Files Processed: " + "\t" + i);
-        System.out.println("All lines: " + linesAll +"; Valuable Lines: "+ linesValuable + "; Ratio (%): "+ linesValuable*100.0/linesAll + "\n");
+        System.out.println("File(s) Processed: " + "\t" +  i + "\n");
+        //System.out.println("All lines: " + linesAll +"; Valuable Lines: "+ linesValuable + "; Ratio (%): "+ linesValuable*100.0/linesAll + "\n");
+        System.out.println("Line(s) Processed: " + "\t" + linesAll);
+        System.out.println("Valuable Line(s): " + "\t" + linesValuable);
+        System.out.println("Ratio (%): " + "\t" + "\t" + "\t" + linesValuable*100.0/linesAll + "\n");
+
 
         //writer
-        FileWriter writer = new FileWriter("logsOut.file");
-        BufferedWriter buffer = new BufferedWriter(writer);
-        buffer.write(stringBufferOut.toString());
-        buffer.close();
-        System.out.println("logsOut.file: Stored"+ "\n");
+        try {
+            FileWriter writer = new FileWriter("logsOut.file");
+            BufferedWriter buffer = new BufferedWriter(writer);
+            buffer.write(stringBufferOut.toString());
+            buffer.close();
+            System.out.println("logsOut.file:" + "\t" + "\t" + "Stored"+ "\n");
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+
 
         return true;
     }
