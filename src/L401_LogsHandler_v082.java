@@ -3,7 +3,7 @@ import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class L401_LogsHandler_v081 {
+public class L401_LogsHandler_v082 {
 
     public static void main(String[] args) throws IOException {
 
@@ -80,7 +80,7 @@ public class L401_LogsHandler_v081 {
                             //System.out.println("line2: "+line2);
 
                             String line3 = line2.replaceAll("(\\s+)", "/");
-                            //System.out.println("line3: "+line3);
+                            System.out.println("line3: "+line3);
 
                             String[] arrToStore = line3.split("/");
 
