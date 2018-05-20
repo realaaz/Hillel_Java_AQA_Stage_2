@@ -7,7 +7,7 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class L401_LogsHandler_v082 {
+public class L401_LogsHandler_v083 {
 
     public static void main(String[] args) throws IOException {
 
@@ -99,21 +99,24 @@ public class L401_LogsHandler_v082 {
 
 
                             // logs gluer - pre alpha-beta-gamma)) - 1 - Hash Map
+                            int[][] array = new int[linesValuable][5];
 
-//                            Map<String, List<String>> HashMap = new HashMap<String, List<String>>();
-//                            List<String> string_list = new ArrayList<String>();
-//
-//                            string_list.add(String.valueOf(linesAll));
-//                            string_list.add(arrToStore[0] + " " + arrToStore[1] + " " + arrToStore[2] + " : " + arrToStore[5]);
-//
-//                            HashMap.put("ONE", string_list);
-//                            System.out.println(HashMap.get("ONE"));
+                            array[0][0] = 1;
+                            array[0][1] = 2;
+                            array[0][2] = 3;
+                            array[0][3] = 4;
+                            array[0][4] = 5;
+
+//                            for (int ii = 0; ii < array.length; ii++) { // string
+//                                for (int j = 0; j < array[ii].length; j++) { // row
+//                                    System.out.print(array[ii][j] + "\t");
+//                                }
+//                                System.out.println("www");
+//                            }
+
 
 
                             linesValuable = linesValuable + 1;
-
-
-
                         } else {
                             //System.out.println("no matches(((");
                         }
@@ -121,22 +124,7 @@ public class L401_LogsHandler_v082 {
                     }
                     fileReader.close();
 
-                    // logs gluer - pre alpha-beta-gamma)) - 2 - 2xArray
-                    int[][] array = new int[linesValuable][5];
 
-                    array[0][0] = linesValuable;
-                    array[0][1] = 2;
-                    array[0][2] = 3;
-                    array[0][3] = 4;
-                    array[0][4] = 5;
-
-
-                    for (int ii = 0; ii < array.length; ii++) { // string
-                        for (int j = 0; j < array[ii].length; j++) { // row
-                            System.out.print(array[ii][j] + "\t");
-                        }
-                        System.out.println("www");
-                    }
 
 
                     ///System.out.println("Valuable content of the file: " + "\n");
