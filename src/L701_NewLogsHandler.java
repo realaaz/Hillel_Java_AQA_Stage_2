@@ -17,10 +17,10 @@ public class L701_NewLogsHandler {
         String content;
 
         content = new String(Files.readAllBytes(Paths.get("Logs.txt")));
-        System.out.println(content);
+        //System.out.println(content);
 
         String content1 = content.replaceAll("[.,!?;]", "");
-        System.out.println(content1);
+        //System.out.println(content1);
 
         // Output requirements:
 
@@ -58,7 +58,8 @@ public class L701_NewLogsHandler {
         String content3 = content1.replaceAll(rEx, "$1 $2 $3 $4 $5 $7 $6 $8 $9 $10");
 
         System.out.println(content3);
-        System.out.println(rEx);
+
+        //System.out.println(rEx);
 
 
     }
