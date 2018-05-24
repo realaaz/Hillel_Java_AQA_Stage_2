@@ -16,6 +16,7 @@ public class L701_RegexDigitsOnly {
     // а после числа может быть количество копеек вида '.05'
 
     // http://gamon.webfactional.com/regexnumericrangegenerator/
+    // http://txt2re.com/
 
     public static void digitsChecker(String inString) {
 
