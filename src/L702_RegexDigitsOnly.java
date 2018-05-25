@@ -1,4 +1,4 @@
-public class L701_RegexDigitsOnly {
+public class L702_RegexDigitsOnly {
 
 
     public static void main(String[] args) {
@@ -24,6 +24,5 @@ public class L701_RegexDigitsOnly {
         System.out.println(outDigits);
 
     }
-
 
 }
