@@ -17,7 +17,7 @@ public class L701_NewLogsHandler {
         String content;
 
         content = new String(Files.readAllBytes(Paths.get("Logs.txt")));
-        //System.out.println(content);
+        System.out.println(content);
 
         String content1 = content.replaceAll("[.,!?;]", "");
         //System.out.println(content1);
@@ -50,7 +50,7 @@ public class L701_NewLogsHandler {
 
         String r08 = "(\\[Service type:(?:.+?)\\])" + rSS;
         String r09 = "(\\[Mapping Ids:(?:.+?)\\])" + rSS;
-        String r10 = "(\\[URI:(?:.+?))";
+        String r10 = "(\\[URI:(?:.+?)\\])";
 
 
         String rEx = r01 + r02 + r03 + r04 + r05 + r06 + r07 + r08 + r09 + r10 + "(.+)";
